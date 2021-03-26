@@ -7,31 +7,32 @@
     //validatePin
 //must be able to interact until exit is selected
 //account for any mistakes when information is entered
-
-
-//initial prompt should list all the options including exti option
-// let displayBalance = module.exports.balance;
+//initial prompt should list all the options including exit option
 const prompt = require('prompt-sync')();
-console.log ('check balance')
-const {balance} = require('./account');
-console.log(balance);
+
+const account = require('./account');
+
+function getBalance (){
+    console.log(balance);
+}
 
 
+function withdraw(withdrawAmount){
+    account.balance = account.balance - withdrawAmount;
+}
 
+console.log(account.balance);
 
-// function getBalance (input){
-     
-//     console.log(balance);
-// }
+function deposit(depositAmount){
+    account.balance = account.deposit + depositAmount;
+}
 
-// function withdraw (input){
+console.log(account.balance);
 
-// }
-
-// function deposit (input){
-
-// }
-
-// function validatePin (input){
-
-// }
+function validatePin (userInput);
+let pinAttempt = userInput;
+if (pinAttempt == account.pin){
+    return true;
+}else{
+    return false;
+}
