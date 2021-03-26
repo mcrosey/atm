@@ -2,7 +2,7 @@
 //this will contain the user menu that interacts with the atm
 
 const { pin, balance } = require("./account")
-
+const prompt = require('prompt-sync')();
 
 // menu
 // enterpin
@@ -13,3 +13,10 @@ const { pin, balance } = require("./account")
 // make a withdrawl
 // make a deposit
 // exit the atm
+
+console.log("welcome");
+console.log("please enter pin");
+const enterPin = prompt();
+const {validate} = require('./atm');
+let result = validate(enterPin);
+console.log(result);
