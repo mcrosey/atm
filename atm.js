@@ -1,5 +1,3 @@
-
-
 const account = require('./account');
 
 function getBalance (){
@@ -9,16 +7,16 @@ function getBalance (){
 
 function withdraw(withdrawAmount){
     account.balance = account.balance - withdrawAmount;
+    return account.balance;
 }
 
-//console.log(account.balance);
 
 function deposit(depositAmount){
-    account.balance = account.deposit + depositAmount;
-    console.log(account.balance);
+    account.balance = account.balance + depositAmount;
+    console.log("this is account balance" + account.balance)
+    return account.balance;
 }
 
-//console.log(account.balance);
 
 function validatePin (userInput){
 let pinAttempt = userInput;
@@ -27,7 +25,7 @@ if(pinAttempt != account.pin){
 }else{
     return "thank you";
 }
-console.log(validatePin);
+
 }
 module.exports.validate = validatePin;
 module.exports.getBalance = getBalance;

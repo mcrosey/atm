@@ -1,5 +1,6 @@
 const { pin, balance } = require("./account")
 const prompt = require('prompt-sync')();
+const {validate, getBalance, deposit, withdraw} = require('./atm');
 
 // menu
 // enterpin~
@@ -14,26 +15,40 @@ const prompt = require('prompt-sync')();
 console.log("welcome");
 console.log("please enter pin");
 const enterPin = prompt();
-const {validate, getBalance, deposit, withdraw} = require('./atm');
 let result = validate(enterPin);
+switch (result){
+    case "thank you":
+        console.log("thank you");
+        break;
+    case "please re-enter pin":
+        console.log('please try again');
+        const enterPin = prompt();
+        validate(enterPin);
+        // break;
+}
 console.log(result);
 console.log('choose menu item');
 console.log('1 check balance \n2 make a deposit \n3 make a withdrawl');
 const makeChoice = prompt();
 switch(makeChoice) {
 case "1":
-    getBalance;
     console.log(balance);
     break;
 case "2":
-    let depositAmount = prompt("How much would you like to deposit?")
-    parseInt(depositAmount);
-    deposit;
-    console.log(balance);
+    console.log("How much would you like to deposit");
+    let depositSum = prompt()
+    depositSum = parseInt(depositSum);
+    console.log(depositSum);  
+    let sum = deposit(depositSum);
+    console.log(sum);
     break;
 case "3":
-    withdraw;
-    console.log(balance);
+    console.log("How much would you like to withdraw?");
+    let withdrawAmount = prompt();
+    withdrawAmount = parseInt(withdrawAmount);
+    console.log (withdrawAmount);
+    let amount = withdraw(withdrawAmount);
+    console.log (amount);
     break;
 default:
     break;
